@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roomie</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-white text-gray-900 font-sans min-h-screen flex items-center justify-center p-4">
+
+  <div class="flex flex-col md:flex-row max-w-6xl w-full bg-white border border-blue-900 rounded-xl shadow-lg overflow-hidden h-[600px]">
+    <!-- Esquerda: imagem e controles -->
+    <div class="chat-container flex flex-col bg-blue-50 p-6 md:w-1/3 gap-6">
+      <figure class="flex justify-center">
+        <img
+          src="./roomie.png"
+          alt="Chatbot AI"
+          class="rounded-xl shadow-lg object-cover w-full h-48 md:h-auto"
+        />
+      </figure>
+
+      <div id="controles" class="flex flex-col gap-4">
+        <button
+          id="iniciarBtn"
+          class="bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold rounded-lg py-3 shadow hover:from-blue-700 hover:to-blue-800 transition"
+        >
+          Iniciar conversa
+        </button>
+        <button
+          id="encerrarBtn"
+          class="bg-white border border-blue-900 text-blue-900 font-semibold rounded-lg py-3 shadow hover:bg-blue-100 transition"
+        >
+          Encerrar conversa
+        </button>
+      </div>
+    </div>
+
+    <!-- Direita: chat -->
+    <div class="chat-container flex flex-col flex-grow md:w-2/3 bg-white border-l border-blue-900 rounded-tr-xl rounded-br-xl shadow-inner">
+      <header class="chat-header flex justify-between items-center bg-blue-800 text-white px-6 py-5 rounded-tr-xl flex-shrink-0">
+        <h1 class="text-xl md:text-2xl font-bold">Roomie - Seu colega de apê</h1>
+        <div
+          id="connection-status"
+          class="status-offline text-sm font-semibold bg-red-600 px-4 py-1 rounded-full animate-pulse"
+        >
+          Conectando...
+        </div>
+      </header>
+
+      <div
+        id="chat-box"
+        class="chat-box flex flex-col flex-grow overflow-y-auto px-6 py-5 space-y-4 bg-blue-50 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100"
+      ></div>
+
+      <footer class="chat-input-area flex items-center border-t border-blue-300 px-6 py-4 bg-white rounded-br-xl flex-shrink-0">
+        <input
+          type="text"
+          id="message-input"
+          placeholder="Digite sua mensagem..."
+          class="flex-grow border border-blue-300 rounded-l-lg px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-blue-600 transition"
+        />
+        <button
+          id="send-button"
+          class="bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold px-6 py-3 rounded-r-lg shadow hover:from-blue-700 hover:to-blue-800 transition"
+        >
+          Enviar
+        </button>
+      </footer>
+    </div>
+  </div>
+        <script src="https://cdn.socket.io/4.7.5/socket.io.min.js">
+        </script>
+        <script src="script.js"></script>  
+</body>
+</html>

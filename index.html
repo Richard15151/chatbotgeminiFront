@@ -1,48 +1,51 @@
 <!DOCTYPE html>
-<html lang="pt-BR" >
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Roomie</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
-<body class="bg-white text-gray-900 font-sans min-h-screen flex items-center justify-center p-4">
+<body class="bg-gradient-to-br from-blue-50 to-white text-gray-900 font-sans min-h-screen flex items-center justify-center p-4">
 
-  <div class="flex flex-col md:flex-row max-w-6xl w-full bg-white border border-blue-900 rounded-xl shadow-lg overflow-hidden h-[600px]">
+  <div class="flex flex-col md:flex-row max-w-6xl w-full bg-white border border-blue-900 rounded-2xl shadow-2xl overflow-hidden md:h-[600px] h-screen">
     <!-- Esquerda: imagem e controles -->
-    <div class="chat-container flex flex-col bg-blue-50 p-6 md:w-1/3 gap-6">
-      <figure class="flex justify-center">
+    <div class="flex flex-col bg-blue-50 p-6 md:w-1/3 w-full gap-4 items-center md:items-stretch md:gap-6 flex-shrink-0">
+      <figure class="w-48 h-48 md:w-80 md:h-80">
         <img
           src="./roomie.png"
           alt="Chatbot AI"
-          class="rounded-xl shadow-lg object-cover w-full h-48 md:h-auto"
+          class="rounded-full shadow-lg object-cover w-full h-full border-4 border-blue-800"
         />
       </figure>
 
-      <div id="controles" class="flex flex-col gap-4">
+      <div class="flex flex-col gap-3 w-full">
         <button
           id="iniciarBtn"
-          class="bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold rounded-lg py-3 shadow hover:from-blue-700 hover:to-blue-800 transition"
+          class="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold rounded-lg py-3 shadow hover:from-blue-700 hover:to-blue-800 transition"
         >
+          <i data-lucide="play-circle" class="w-5 h-5"></i>
           Iniciar conversa
         </button>
         <button
           id="encerrarBtn"
-          class="bg-white border border-blue-900 text-blue-900 font-semibold rounded-lg py-3 shadow hover:bg-blue-100 transition"
+          class="flex items-center justify-center gap-2 bg-white border border-blue-900 text-blue-900 font-semibold rounded-lg py-3 shadow hover:bg-blue-100 transition"
         >
+          <i data-lucide="x-circle" class="w-5 h-5"></i>
           Encerrar conversa
         </button>
       </div>
     </div>
 
     <!-- Direita: chat -->
-    <div class="chat-container flex flex-col flex-grow md:w-2/3 bg-white border-l border-blue-900 rounded-tr-xl rounded-br-xl shadow-inner">
-      <header class="chat-header flex justify-between items-center bg-blue-800 text-white px-6 py-5 rounded-tr-xl flex-shrink-0">
-        <h1 class="text-xl md:text-2xl font-bold">Roomie - Seu colega de apê</h1>
+    <div class="flex flex-col flex-grow md:w-2/3 w-full bg-white border-t md:border-t-0 md:border-l border-blue-900 rounded-tl-2xl md:rounded-tr-2xl md:rounded-bl-none md:rounded-br-2xl shadow-inner overflow-hidden">
+      <header class="flex justify-between items-center bg-blue-800 text-white px-6 py-4 md:py-5 rounded-tl-2xl md:rounded-tr-2xl flex-shrink-0">
+        <h1 class="text-lg md:text-2xl font-bold">Roomie - Seu colega de apê</h1>
         <div
           id="connection-status"
-          class="status-offline text-sm font-semibold bg-red-600 px-4 py-1 rounded-full animate-pulse"
+          class="text-sm font-semibold bg-red-600 px-3 py-1 rounded-full animate-pulse"
         >
           Conectando...
         </div>
@@ -50,10 +53,10 @@
 
       <div
         id="chat-box"
-        class="chat-box flex flex-col flex-grow overflow-y-auto px-6 py-5 space-y-4 bg-blue-50 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100"
+        class="flex flex-col flex-grow overflow-y-auto px-4 md:px-6 py-4 md:py-5 space-y-4 bg-blue-50 scrollbar-thin scrollbar-thumb-blue-400 scrollbar-track-blue-100"
       ></div>
 
-      <footer class="chat-input-area flex items-center border-t border-blue-300 px-6 py-4 bg-white rounded-br-xl flex-shrink-0">
+      <footer class="flex items-center border-t border-blue-300 px-4 md:px-6 py-3 md:py-4 bg-white flex-shrink-0">
         <input
           type="text"
           id="message-input"
@@ -62,15 +65,18 @@
         />
         <button
           id="send-button"
-          class="bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold px-6 py-3 rounded-r-lg shadow hover:from-blue-700 hover:to-blue-800 transition"
+          class="bg-gradient-to-r from-blue-800 to-blue-900 text-white font-semibold px-4 md:px-6 py-3 rounded-r-lg shadow hover:from-blue-700 hover:to-blue-800 transition"
         >
           Enviar
         </button>
       </footer>
     </div>
   </div>
-        <script src="https://cdn.socket.io/4.7.5/socket.io.min.js">
-        </script>
-        <script src="script.js"></script>  
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
 </body>
 </html>
